@@ -41,7 +41,7 @@ if($con=="connected"){
     $products = json_decode($json);
 
    <h4>Sonuçları alacağımız array tanımlanıyor.</h4>
-    $responses = array();
+    $responses = array()
     
     <h4>Arama işlemlerini gerçekleştireceğimiz yeni bir json oluşturuyoruz.<br>
     Eğer daha önce aynı index ismi ile json oluşturduysanız hata veririr.</h4>
