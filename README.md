@@ -35,8 +35,8 @@ $elasticsearch = new elasticsearch();
 $con = $elasticsearch->connectTest();
 
 <h4>2- elasticsearch portuna bağlantı sağlandi ise devam ediliyor.</h4>
-  <h4>Arama işlemlerini gerçekleştireceğimiz yeni bir json oluşturuyoruz.</h4>
-    $elasticsearch->createIndex("yeni2",$rows=array("id","hit","date","title-1","name-1"));
+<h4>Arama işlemlerini gerçekleştireceğimiz yeni bir json oluşturuyoruz.</h4>
+$elasticsearch->createIndex("yeni2",$rows=array("id","hit","date","title-1","name-1"));
     
   
 
