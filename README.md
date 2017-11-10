@@ -23,6 +23,8 @@ if ($client) {<br>
     echo 'connected';<br>
 }
 
+<h2>Ayrıntılı Dökümana Aşağıdaki adresten ulaşabilrsiniz.</h2>
+https://github.com/ofke-yazilim/elasticsearch-php/tree/master/elasticsearch/documents
 
 <h2>2- elasticsearch/elasticsearch.php class fonksiyonları ve kullanımı</h2>
 
