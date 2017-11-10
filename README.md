@@ -31,7 +31,7 @@ if ($client) {<br>
 <span>include 'elasticsearch.php';</span>
 
 <h4>Yüklenen class tanıtılıyor</h4>
-<span>{$elasticsearch = new elasticsearch();}</span>
+<span>$elasticsearch = new elasticsearch();</span>
 
 <h4>elasticsearch portuna bağlantı sağlandımı test ediliyor</h4>
 <span>$con = $elasticsearch->connectTest();</span>
