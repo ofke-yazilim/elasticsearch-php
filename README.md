@@ -71,20 +71,6 @@ if ($client) {<br>
 
     <h4>id değeri 14 olan verinin name-5 ve name-3 kısmını istenilen değerler ile günceller</h4>
     //$elasticsearch->dataUpdate("yeni2","urunler3",14,array("doc"=>array("name-5"=>"name5","name-3"=>"name3")),"http:localhost:9200");
-
-    <h4>Komplex sorgular için çalıştırılan bir fonsiyondur.</h4>
-    //$responses = $elasticsearch->searchComplex("yeni2" ##"index değeri"
-        //,"urunler3" ##"type değeri"   
-        //,null ##"like sorgusu null değeri alır
-        //,array("id","hit","code","name-1")  ##"Like sorgusunu yapılacağı sütunlar"
-        //,"id" ## "Range işlemi yapılacak sütun" 
-        //,5 ## "Tanımlı değerden büyükleri getirir    null değeri alabilir                    
-        //,100 ## "Tanımlı değerden küçükleri getirir   null değeri alabilir  
-        //,array("id"=>array("1","2","3","16")) ## "Terms değerini temsil eder" örneğin : status değerleri 1,2,ya da 3 olanları getir =>array("status"=>array("1","2","3")) array() şeklinde boş gönderilebilir.
-        //,array('hit' => array( 'order' => 'desc')) ## "örenğin hit değerine göre sıralama istersek" => array('hit' => array( 'order' => 'desc') array() şeklinde boş gönderilebilir.
-        //,200 ## Kaç adet veri getirilecek null değeri alır
-        //,null)## Sayfa değeri 1 1. sayfayı temsil eder, 2 ikinci sayfayı
-    ;
     
     <h4>Veriler ekrana yazılıyor.</h4>
     //echo count($responses);exit;
