@@ -21,30 +21,31 @@ $client = Elasticsearch\ClientBuilder::create()->build();<br>
  
 if ($client) {<br>
     echo 'connected';<br>
-}<br>
-<br><br>
-<h2>elasticsearch/elasticsearch.php class fonksiyonları ve kullanımı</h2>
+}
+
+
+<h2>2- elasticsearch/elasticsearch.php class fonksiyonları ve kullanımı</h2>
 
 <h4>elasticsearch fonksiyonlarını içeren class yükleniyor</h4>
-include 'elasticsearch.php';
+#include 'elasticsearch.php';
 
 <h4>Yüklenen class tanıtılıyor</h4>
-$elasticsearch = new elasticsearch();
+#$elasticsearch = new elasticsearch();
 
 <h4>elasticsearch portuna bağlantı sağlandımı test ediliyor</h4>
 $con = $elasticsearch->connectTest();
 
 <h4>2- elasticsearch portuna bağlantı sağlandi ise devam ediliyor.</h4>
-
+if($con=="connected"){
     <h4>Verilerin bulunduğu json alınıyor</h4>
     $json = file_get_contents("data.json");
     $products = json_decode($json);
 
    <h4>Sonuçları alacağımız array tanımlanıyor.</h4>
-
+    $responses = array();
     
-    <h4>Arama işlemlerini gerçekleştireceğimiz yeni bir json oluşturuyoruz.<br>
-    Eğer daha önce aynı index ismi ile json oluşturduysanız hata veririr.</h4>
+    <h4>Arama işlemlerini gerçekleştireceğimiz yeni bir json oluşturuyoruz.</h4>
+    <h6>Eğer daha önce aynı index ismi ile json oluşturduysanız hata veririr.</h6>
     $elasticsearch->createIndex("yeni2",$rows=array("id","hit","date","title-1","name-1"));
     
     <h4>Adı gönderilen index json değerini siler</h4>
@@ -89,8 +90,8 @@ $con = $elasticsearch->connectTest();
     echo count($responses);exit;
     print_r($responses);exit;
     var_dump($responses);exit;
+} else{
+    die("Elasticsearch portuna bağlantı sağlanamadı");
+}
 
-
-    
-  
 
