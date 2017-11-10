@@ -1,0 +1,17 @@
+{
+    "name": "lenovo/elasticsearh",
+    "description": "elasticsearch_",
+    "type": "project",
+    "license": "1",
+    "authors": [
+        {
+            "name": "omer faruk",
+            "email": "ofke_erz@hotmail.com"
+        }
+    ],
+    "minimum-stability": "beta",
+    "require": {
+        "nesbot/carbon": "^1.22",
+        "elasticsearch/elasticsearch": "^6.0@beta"
+    }
+}

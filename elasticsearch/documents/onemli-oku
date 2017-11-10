@@ -1,0 +1,7 @@
+1- İlk önce create_index.php
+2- mset.php
+3- mget.php
+
+Yukarıdakiler 1 kez çalışırsa yeterlidir.
+
+4-diğerler search işlmleri için sırası önemli değil incele :)

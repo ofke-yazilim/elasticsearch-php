@@ -1,0 +1,21 @@
+Öncelikle çalıştırmış olduğumuz servisleri projemize tanımlayabimek için composer kuruyoruz projemize.
+1- Composer nasıl kurulur : https://getcomposer.org/Composer-Setup.exe adresinden indirilen exe next, next ile kurulur.
+2- Ardından command ekranı kullanılarak composer eklenmek istenilen projeye gidilir örneğin ben wamp üzerinde proje yapıyorum
+   "cd C:\wamp64\www\elasticsearh" bu projeye gidebilirim.
+3- Proje yolunu command ekranında tanıttıktan sonra "composer init" yazarak composer.json dosyamı oluturuyorum.
+   (composer.json oluştururken bir kaç bilgi isteyecek bizden.girerek enter yapalım.)
+
+//Artık composer kuruldu sıra elasticsearch servisini aktif etmekte bunun için 
+1- https://www.elastic.co/downloads/elasticsearch adresinden elasticsearch dosyaları zip olarak indirilir.
+2- İndirilen zip dosyası c:/ içerisinde açılır ve elasticsearch.bat dosyası çalıştırılır ve sürekli çalışır vaziyette bırakılır 
+   bu sayede elasticsearch servisi çalışır.
+3- command ekranına "composer require elasticsearch/elasticsearch" yazarak projeme elasticsearch servisini aktif ediyorum
+
+index.php dosyamın içine aşağıdaki kodları yazarak çalışıp çalışmadığını test edebilirim.
+
+require 'vendor/autoload.php';
+$client = Elasticsearch\ClientBuilder::create()->build();
+ 
+if ($client) {
+    echo 'connected';
+}
