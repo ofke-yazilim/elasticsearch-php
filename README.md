@@ -35,7 +35,7 @@ $elasticsearch = new elasticsearch();
 $con = $elasticsearch->connectTest();
 
 <h4>2- elasticsearch portuna bağlantı sağlandi ise devam ediliyor.</h4>
-if($con=="connected"){
+
     <h4>Verilerin bulunduğu json alınıyor</h4>
     $json = file_get_contents("data.json");
     $products = json_decode($json);
@@ -89,9 +89,6 @@ if($con=="connected"){
     echo count($responses);exit;
     print_r($responses);exit;
     var_dump($responses);exit;
-} else{
-    die("Elasticsearch portuna bağlantı sağlanamadı");
-}
 
 
     
