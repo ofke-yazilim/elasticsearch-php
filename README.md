@@ -26,7 +26,6 @@ if ($client) {<br>
 
 <h2>2- elasticsearch/elasticsearch.php class fonksiyonları ve kullanımı</h2>
 
-<?php
 <h4>elasticsearch fonksiyonlarını içeren class yükleniyor</h4>
 <span>include 'elasticsearch.php';</span>
 
@@ -88,9 +87,9 @@ if ($client) {<br>
     ;</span>
     
     <h4>Veriler ekrana yazılıyor.</h4>
-    <span>echo count($responses);exit;</span>
-    <span>print_r($responses);exit;</span>
-    <span>var_dump($responses);exit;</span>
-<span>} else{</span>
-    <span>die("Elasticsearch portuna bağlantı sağlanamadı");</span>
-<span>}</span>
+    <span>echo count($responses);exit;</span><br>
+    <span>print_r($responses);exit;</span><br>
+    <span>var_dump($responses);exit;</span><br>
+<span>} else{</span><br>
+    <span>die("Elasticsearch portuna bağlantı sağlanamadı");</span><br>
+<span>}</span><br>
