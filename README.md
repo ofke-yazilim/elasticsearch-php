@@ -26,7 +26,7 @@ if ($client) {<br>
 
 <h2>2- elasticsearch/elasticsearch.php class fonksiyonları ve kullanımı</h2>
 
-<?php
+
 <h4>elasticsearch fonksiyonlarını içeren class yükleniyor</h4>
 <span>include 'elasticsearch.php';</span>
 
