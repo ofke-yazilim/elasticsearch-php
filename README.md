@@ -36,7 +36,7 @@ if ($client) {<br>
 <span>$con = $elasticsearch->connectTest();</span>
 
 <h4>elasticsearch portuna bağlantı sağlandi ise devam ediliyor.</h4>
-<span>if($con=="connected"){
+<span>if($con=="connected"){</span>
     <h4>Verilerin bulunduğu json alınıyor</h4>
     <span>$json = file_get_contents("data.json");</span>
     <span>$products = json_decode($json);</span>
