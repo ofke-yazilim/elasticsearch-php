@@ -45,7 +45,7 @@ if ($client) {<br>
    <h4>Sonuçları alacağımız array tanımlanıyor.</h4>
     <li>$responses = array();</li>
     
-    <h4>Arama işlemlerini gerçekleştireceğimiz yeni bir json oluşturuyoruz.
+    <h4>Arama işlemlerini gerçekleştireceğimiz yeni bir json oluşturuyoruz.<br>
     Eğer daha önce aynı index ismi ile json oluşturduysanız hata veririr.</h4>
     <li>$elasticsearch->createIndex("yeni2",$rows=array("id","hit","date","title-1","name-1"));</li>
     
@@ -55,8 +55,8 @@ if ($client) {<br>
     <h4>Elasticsearch servisimiz üzerine adı index değeri demo2, tipi urunler2 olan ve içerisinde $product arrayını barındıracak json tanımlandı.</h4>
     <li>$responses = $elasticsearch->dataSet("yeni2","urunler3",$products);</li>
 
-    <h3>Arama yapabilmek için yukarıda tanımlamış olduğumuz json yapısındaki verileri alıyoruz.</h3>
-    <h4>Verileri aldığımız fonksiyon iki şekilde çalışır ilkinde sadece _id indexleri 0 ve 1 olanlar listelenip alınırken ikincisnde bütün veriler alınır.</h4>
+    <h4>Arama yapabilmek için yukarıda tanımlamış olduğumuz json yapısındaki verileri alıyoruz.<br>
+    Verileri aldığımız fonksiyon iki şekilde çalışır ilkinde sadece _id indexleri 0 ve 1 olanlar listelenip alınırken ikincisnde bütün veriler alınır.</h4>
     <li>$responses = $elasticsearch->dataGet("yeni2","urunler3",array(11,51,12,13,27,97));</li>
     <li>$responses = $elasticsearch->dataGet("yeni2","urunler3",array("full", count($products)));</li>
 
@@ -74,7 +74,7 @@ if ($client) {<br>
     <li>$elasticsearch->dataUpdate("yeni2","urunler3",14,array("doc"=>array("name-5"=>"name5","name-3"=>"name3")),"http:localhost:9200");</li>
 
     <h4>Komplex sorgular için çalıştırılan bir fonsiyondur.</h4>
-    <li>  $responses = $elasticsearch->searchComplex("yeni2" 
+    <li>  <em>$responses = $elasticsearch->searchComplex("yeni2" 
         ,"urunler3" 
         ,null
         ,array("id","hit","code","name-1")
@@ -84,7 +84,7 @@ if ($client) {<br>
         ,array("id"=>array("1","2","3","16"))
         ,array('hit' => array( 'order' => 'desc'))
         ,200 
-        ,null)
+        ,null)</em>
     ;</li>
     
     <h4>Veriler ekrana yazılıyor.</h4>
