@@ -45,8 +45,8 @@ if ($client) {<br>
    <h4>Sonuçları alacağımız array tanımlanıyor.</h4>
     <li>$responses = array();</li>
     
-    <h4>Arama işlemlerini gerçekleştireceğimiz yeni bir json oluşturuyoruz.</h4>
-    <h6>Eğer daha önce aynı index ismi ile json oluşturduysanız hata veririr.</h6>
+    <h4>Arama işlemlerini gerçekleştireceğimiz yeni bir json oluşturuyoruz.
+    Eğer daha önce aynı index ismi ile json oluşturduysanız hata veririr.</h4>
     <li>$elasticsearch->createIndex("yeni2",$rows=array("id","hit","date","title-1","name-1"));</li>
     
     <h4>Adı gönderilen index json değerini siler</h4>
@@ -74,18 +74,18 @@ if ($client) {<br>
     <li>$elasticsearch->dataUpdate("yeni2","urunler3",14,array("doc"=>array("name-5"=>"name5","name-3"=>"name3")),"http:localhost:9200");</li>
 
     <h4>Komplex sorgular için çalıştırılan bir fonsiyondur.</h4>
-    <li>$responses = $elasticsearch->searchComplex("yeni2" ##"index değeri"</li>
-        <li>,"urunler3" ##"type değeri"   </li>
-        <li>,null ##"like sorgusu null değeri alır</li>
-        <li>,array("id","hit","code","name-1")  ##"Like sorgusunu yapılacağı sütunlar"</li>
-        <li>,"id" ## "Range işlemi yapılacak sütun" </li>
-        <li>,5 ## "Tanımlı değerden büyükleri getirir    null değeri alabilir    </li>                
-        <li>,100 ## "Tanımlı değerden küçükleri getirir   null değeri alabilir  </li>
-        <li>,array("id"=>array("1","2","3","16")) ## "Terms değerini temsil eder" örneğin : status değerleri 1,2,ya da 3 olanları getir =>array("status"=>array("1","2","3")) array() şeklinde boş gönderilebilir.</li>
-        <li>,array('hit' => array( 'order' => 'desc')) ## "örenğin hit değerine göre sıralama istersek" => array('hit' => array( 'order' => 'desc') array() şeklinde boş gönderilebilir.</li>
-        <li>,200 ## Kaç adet veri getirilecek null değeri alır</li>
-        <li>,null)## Sayfa değeri 1 1. sayfayı temsil eder, 2 ikinci sayfayı</li>
-    <li>;</li>
+    <li>  $responses = $elasticsearch->searchComplex("yeni2" 
+        ,"urunler3" 
+        ,null
+        ,array("id","hit","code","name-1")
+        ,"id" 
+        ,5                  
+        ,100
+        ,array("id"=>array("1","2","3","16"))
+        ,array('hit' => array( 'order' => 'desc'))
+        ,200 
+        ,null)
+    ;</li>
     
     <h4>Veriler ekrana yazılıyor.</h4>
     <li>echo count($responses);exit;</li>
