@@ -24,7 +24,7 @@ if ($client) {<br>
 }
 
 <h3>Önemli : </h3>
-<span>Windows Server Üzerine Kurulum Hakkında</span>
+<h5>Windows Server Üzerine Kurulum Hakkında</h5><hr>
 Eğer elasticsearch windows server üzerine kurulmak isteniyorsa öncelikle windows üzerinde java kurulu olması gerekmektedir. Hem JDK hem JRE kurulu olmalıdır. İnternette "jre server" şeklinde aratarak indirebilirsiniz. Örneğin ben şu adresten uygun sürümü indirdim : http://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html indirilen zip dosyası içeriği c:/Program Files/java.. yolu takip edilrek çıkarılır. Klasörün içerisinde bulunan jre klasörüne ait yol, örneğin : "C:\Program Files (x86)\Java\jdk1.8.0_151\jre" denetim masası üzerinden -> Sistem sekmesin içerisiden -> gelişmiş sistem ayarları takip edilerek açılan pencereden ortam değişkenleri tıklanır açılan pencerede sistem değişkenleri kısmına yeni denerek  değişken adı JAVA_HOME ve değişken adresi "C:\Program Files (x86)\Java\jdk1.8.0_151\jre" olacak şekilde tanımlanır. Bu sayede elastichsearch windows server üzerinde kullanılabilir.
 
 <h2>Ayrıntılı Dökümana Aşağıdaki adresten ulaşabilrsiniz.</h2>
