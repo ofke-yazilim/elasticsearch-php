@@ -18,11 +18,26 @@ if($con=="connected"){
     $responses = array();
     
     //<h4>Arama işlemlerini gerçekleştireceğimiz yeni bir json oluşturuyoruz.</h4>
-    //<h6>Eğer daha önce aynı index ismi ile json oluşturduysanız hata veririr.</h6>
+    //<h6>Eğer daha önce aynı index yani yeni2 adı ile json oluşturduysanız hata veririr.</h6>
     $elasticsearch->createIndex("yeni2",$rows=array("id","hit","date","title-1","name-1"));
     
     //<h4>Adı gönderilen index json değerini siler</h4>
-    $elasticsearch->deleteIndex("yeni2");exit;
+    $elasticsearch->deleteIndex("yeni2");
+    
+    //<h4>Elasticsearch servis üzerinde eğer gönderilen indexe sahip bir oluşum varsa özelliklerini döndürür</h4>
+    $indexAbout = $elasticsearch->getIndex("yeni2","http://localhost:9200");
+
+    //<h4>Alınan index bilgileri ekrana basılıyor</h4>
+    print_r($indexAbout);
+
+    //<h5>Yukarıda getIndex ile çağrılan index elastic serviste mevcutdeğilse 404 hatsı verir</h5>
+    if($indexAbout->status==404){
+        //<h5>İndex olmadığı için oluşturuyoruz.</h5>
+        $elasticsearch->createIndex("yeni2",$rows=array("id","code","stock","name-1"));
+    }
+    
+    //<h4>Elastic servis üzerinde tanımlı tüm indexler ekrana basılıyor</h4>
+    echo $elasticsearch->getIndex("http://localhost:9200");
     
     //<h4>Elasticsearch servisimiz üzerine adı index değeri demo2, tipi urunler2 olan ve içerisinde $product arrayını barındıracak json tanımlandı.</h4>
     $responses = $elasticsearch->dataSet("yeni2","urunler3",$products);
