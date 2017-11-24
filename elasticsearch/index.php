@@ -37,7 +37,7 @@ if($con=="connected"){
     }
     
     //<h4>Elastic servis üzerinde tanımlı tüm indexler ekrana basılıyor</h4>
-    echo $elasticsearch->getIndex("http://localhost:9200");
+    echo $elasticsearch->getIndexs("http://localhost:9200");
     
     //<h4>Elasticsearch servisimiz üzerine adı index değeri demo2, tipi urunler2 olan ve içerisinde $product arrayını barındıracak json tanımlandı.</h4>
     $responses = $elasticsearch->dataSet("yeni2","urunler3",$products);
