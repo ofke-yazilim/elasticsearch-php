@@ -56,7 +56,22 @@ https://github.com/ofke-yazilim/elasticsearch-php/tree/master/elasticsearch/docu
     <span>$elasticsearch->createIndex("yeni2",$rows=array("id","hit","date","title-1","name-1"));</span>
     
     <h4>Adı gönderilen index json değerini siler</h4>
-    <span>$elasticsearch->deleteIndex("yeni2");exit;</span>
+    <span>$elasticsearch->deleteIndex("yeni2");</span>
+    
+    <h4>Elasticsearch servis üzerinde eğer gönderilen indexe sahip bir oluşum varsa özelliklerini döndürür</h4>
+    $indexAbout = $elasticsearch->getIndex("yeni2","http://localhost:9200");
+    
+    <h4>Alınan index bilgileri ekrana basılıyor</h4>
+    print_r($indexAbout);
+    
+    <h5>Yukarıda getIndex ile çağrılan index elastic serviste mevcutdeğilse 404 hatsı verir</h5>
+    if($indexAbout->status==404){
+        <h5>İndex olmadığı için oluşturuyoruz.</h5>
+        $elasticsearch->createIndex("yeni2",$rows=array("id","code","stock","name-1"));
+    }
+    
+    <h4>Elastic servis üzerinde tanımlı tüm indexler ekrana basılıyor</h4>
+    echo $elasticsearch->getIndexs("http://localhost:9200");
     
     <h4>Elasticsearch servisimiz üzerine adı index değeri demo2, tipi urunler2 olan ve içerisinde $product arrayını barındıracak json tanımlandı.</h4>
     <span>$responses = $elasticsearch->dataSet("yeni2","urunler3",$products);</span>
