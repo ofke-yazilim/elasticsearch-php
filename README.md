@@ -64,10 +64,10 @@ https://github.com/ofke-yazilim/elasticsearch-php/tree/master/elasticsearch/docu
     <h4>Alınan index bilgileri ekrana basılıyor</h4>
     print_r($indexAbout);
     
-    <h5>Yukarıda getIndex ile çağrılan index elastic serviste mevcutdeğilse 404 hatsı verir</h5>
+    <h5>Yukarıda getIndex ile çağrılan index elastic serviste mevcut değilse 404 hatası verir</h5>
     if($indexAbout->status==404){
         <h5>İndex olmadığı için oluşturuyoruz.</h5>
-        $elasticsearch->createIndex("yeni2",$rows=array("id","code","stock","name-1"));
+        $elasticsearch->createIndex("yeni2",$rows=array("id","code","stock","name-1"));<br>
     }
     
     <h4>Elastic servis üzerinde tanımlı tüm indexler ekrana basılıyor</h4>
