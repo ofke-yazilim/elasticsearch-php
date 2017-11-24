@@ -474,6 +474,41 @@ class elasticsearch {
         return $response;
     }
     
+    //Elasticseaqrch servis üzerinde tanımlı olan tüm indexleri getirir
+    /*
+     * 1 değer alır ve json veri döndürür.
+     * $elasticSerchUrl  => Elasticsearch portunun çalıştığı adres linki "http://localhost:9200" genelde 9200 üzerinde çalışır.
+     */
+    public function getIndexs($elasticSerchUrl){
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "$elasticSerchUrl/_cat/indices/");
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $respond = curl_exec($ch);
+        curl_close($ch);
+        
+        return $respond;
+    }
+    
+    //Elasticseaqrch servis üzerinde tanımlı olan belirli indexi getirir
+    /*
+     * 2 değer alır ve array veri döndürür.
+     * $index => string türünde saklayacağımız verinin hangi isimde indexleneceğini belirtir. json olarak saklanır yani database gibi düşün
+     * $elasticSerchUrl  => Elasticsearch portunun çalıştığı adres linki "http://localhost:9200" genelde 9200 üzerinde çalışır.
+     */
+    public function getIndex($index,$elasticSerchUrl){
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "$elasticSerchUrl/$index");
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $respond = json_decode(curl_exec($ch));
+        curl_close($ch);
+        
+        return $respond;
+    }
+    
     //Sql işlemlerinde kullanmış olduğumuz like kodunu kullandığımızı düşünün
     /*
      * $search => Aranacak string
