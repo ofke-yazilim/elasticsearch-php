@@ -80,6 +80,15 @@ https://github.com/ofke-yazilim/elasticsearch-php/tree/master/elasticsearch/docu
     Verileri aldığımız fonksiyon iki şekilde çalışır ilkinde sadece _id indexleri 0 ve 1 olanlar listelenip alınırken ikincisnde bütün veriler alınır.</h4>
     <span>$responses = $elasticsearch->dataGet("yeni2","urunler3",array(11,51,12,13,27,97));</span>
     <span>$responses = $elasticsearch->dataGet("yeni2","urunler3",array("full", count($products)));</span>
+    
+    <h4>Eğer array olarak 1 adet veri gönderiyorsak aşağıdaki şekilde ekliyoruz.</h4>
+    Örneğin $data = array(0=>array("id"=>210,"name-1"=>"Kesmez"))<br>
+    id değerimizi gönderirken aşağıda olduğu gibi bir fazlası gönderilmeli 210 için 211 gönderiilmeli<br>
+    Ayrıca 211 sayısının sol tarafında 1 olarak gönderilmeli <br>
+    $insert = $elasticsearch->dataSetAdd("yeni2","urunler3",1,211,"http://localhost:9200",array(0=>array("id"=>210,"name-1"=>"Kesmez"),1=>array("id"=>211,"name-1"=>"Faruk")));
+
+    //<h4>Elastc serviste bulunan array boyutunu verir.</h4>
+    echo $elasticsearch->getCount("yeni2","urunler3","http://localhost:9200");
 
     <h4>Aşağıda sql sorgularında like olarak bilinen işlemin elasticsearch ile yapan fonsiyonu çalıştırır.<br>
     Aşağıdaki sorgu id,code,name-1 sütunlarında içerisinde Bayan geçen ya da sonu 001 ile biten verileri id değerine göre büyükten küçüğe listeler.</h4>
