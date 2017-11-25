@@ -113,6 +113,67 @@ class elasticsearch {
         return $this->client->bulk($params);
     }
     
+    //Daha önce set edilmiş veriler üzerine yeni array olarak ekleniyor veriler ekleniyor.
+    /*
+     * 6 değer alır ve json türünde değer döndürür:
+     * $index => string türünde saklayacağımız verinin hangi isimde indexleneceğini belirtir. json olarak saklanır yani database gibi düşün
+     * $type  => string türünde sakladığımız veriliern saklanma yeri yani veritabanındaki tablo gibi düşün
+     * $data  => array türünde saklayacağımız veriyi içerir. ($data verisi aşağıdaki şekilde gönderilmelidir.)
+     * $data  = array(0=>array('name'=>'omer','surname'=>'kesmez'),1=>array('name'=>'faruk','surname'=>'kesmez'),..)
+     * $page  => kaçıncı sayfa olduğunu belirtir.
+     * $limit => Her sayfada kaç adet data olduğunu saklar.
+     * $elasticSerchUrl  => Elasticsearch portunun çalıştığı adres linki "http://localhost:9200" genelde 9200 üzerinde çalışır.
+     * Bakınız => documents/insertdata.php
+     */
+    public function dataSetAdd($index,$type,$limit,$page,$elasticSerchUrl,$data=array()){
+        $boyut = count($data);
+        for($i=0;$i<$boyut;$i++) {
+            $_data = json_encode($data[$i]);
+            $key = $i+(($page-1)*$limit);
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, "$elasticSerchUrl/$index/$type/$key/_create");
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $_data);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Content-Length: '. strlen($_data)));
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+            $respond = curl_exec($ch);
+            curl_close($ch);
+            echo $respond;
+        }
+    }
+    
+    
+    //Daha önce set edilmiş veriler üzerine array olarak olarak gönderilen veriler id değerine uygun olarak güncelleniyor.
+    /*
+     * 3 değer alır ve array türünde değer döndürür:
+     * $index => string türünde saklayacağımız verinin hangi isimde indexleneceğini belirtir. json olarak saklanır yani database gibi düşün
+     * $type  => string türünde sakladığımız veriliern saklanma yeri yani veritabanındaki tablo gibi düşün
+     * $data  => array türünde saklayacağımız veriyi içerir. ($data verisi aşağıdaki şekilde gönderilmelidir.)
+     * $data  = array(0=>array('name'=>'omer','surname'=>'kesmez'),1=>array('name'=>'faruk','surname'=>'kesmez'),..)
+     * Bakınız => documents/updatedata.php
+     */
+    public function dataUpdateArray($index,$type,$data=array()){
+        $boyut = count($data);
+        for($i=0;$i<$boyut;$i++) {
+            
+            $params['body'][] = array(
+        	'update' => array(
+                    '_index' => "$index",
+                    '_type' =>  "$type",
+                    '_id' => $i
+        	)
+            );
+
+            $params['body'][] = array(
+        	'doc_as_upsert' => 'true',
+        	'doc' => $data[$i]
+            );
+            
+        }
+      return $this->client->bulk($params);
+    }
+    
     //Daha önce indexlanmiş ya da bulklanmış veriden istediğimiz id numralarına sahip olanları alıyoruz.
     /*
      * 3 değer alır ve array türünde değer döndürür:
