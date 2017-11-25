@@ -570,6 +570,25 @@ class elasticsearch {
         return $respond;
     }
     
+    //index ve type değerine göre toplam eleman sayısını döndürür
+     /*
+     * 2 değer alır ve json veri döndürür.
+     * $index => string türünde saklayacağımız verinin hangi isimde indexleneceğini belirtir. json olarak saklanır yani database gibi düşün
+     * $type  => string türünde sakladığımız veriliern saklanma yeri yani veritabanındaki tablo gibi düşün
+     * $elasticSerchUrl  => Elasticsearch portunun çalıştığı adres linki "http://localhost:9200" genelde 9200 üzerinde çalışır.
+     */
+    public function getCount($index,$type,$elasticSerchUrl) {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "$elasticSerchUrl/$index/$type/_count");
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $respond = curl_exec($ch);
+        curl_close($ch);
+        
+        return $respond;
+    }
+    
     //Sql işlemlerinde kullanmış olduğumuz like kodunu kullandığımızı düşünün
     /*
      * $search => Aranacak string
